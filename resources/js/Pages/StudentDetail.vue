@@ -51,12 +51,10 @@ function cancelEnroll() {
 }
 
 function enrollStudent() {
-    console.log('enrollStudent');
-    console.log(courseToEnroll.value);
-    console.log(props.student.id);
-
     if (courseToEnroll.value) {
         Inertia.post(`/students/enroll/${props.student.id}`, { course_id: courseToEnroll.value});
+    } else {
+        alert('Please choose a course.');
     }
 }
 
@@ -131,7 +129,6 @@ function enrollStudent() {
         :okButton="{
             onclick: enrollStudent,
             text: 'Enroll',
-            loading: true
         }"
         :cancelButton="{
             onclick: cancelEnroll,
